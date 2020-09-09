@@ -16,6 +16,8 @@ using namespace std;
 class SceneManager
 {
 public:
+	float m_time = 0;
+	float m_pTime = 0;
 	int point = 0;
 	Objects* objects;
 	Animation2D* anim;
@@ -28,8 +30,8 @@ public:
 	void loadObjects(char *l);
 	void draw();
 	void update_animation(float);
-	void mouse_animation_move(int x, int y);
-	void mouse_animation_flash(int x, int y);
+	void mouse_animation_move(int x, int y, float deltatime);
+	void mouse_animation_flash(int x, int y, float deltatime);
 	void LevelUp(int i);
 	void free();
 	bool checkEvent();
@@ -38,6 +40,7 @@ public:
 	bool checkCoRec(Rectangl rec, Circle cir);
 	bool checkCoCirCir();
 	bool checkColRecRec();
+	void checkColRecRecP();
 	static SceneManager* GetInstance(float);
 private:
 	static SceneManager* s_Instance;

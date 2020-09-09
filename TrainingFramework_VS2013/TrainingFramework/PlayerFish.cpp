@@ -43,28 +43,15 @@ void PlayerFish::bite()
 
 void PlayerFish::disapear()
 {
-	sxw = sx;
-	syw = sy;
-	szw = sz;
-	int res = rand() % (4 - 1 + 1) + 1;
-	if (res == 1) {
-		srand(time(NULL));
-		txw = -(rand() % (320 - 300 + 1) + 300) / 100;
-		tyw = ((rand() % (640 - 0 + 1) + 0) - 300) / 100;
+	if (disapear_wait == 1) {
+		sxw = sx;
+		syw = sy;
+		szw = sz;
+		txw = ((rand() % (100 - 0 + 1) + 0) - 50) / 100;
+		tyw = 1.7;
+		m_time = 0;
+		dis = true;
 	}
-	else if (res == 2) {
-		txw = (rand() % (320 - 300 + 1) + 300) / 100;
-		tyw = ((rand() % (640 - 0 + 1) + 0) - 300) / 100;
-	}
-	else if (res == 3) {
-		txw = ((rand() % (600 - 0 + 1) + 0) - 300) / 100;
-		tyw = (rand() % (640 - 300 + 1) + 300) / 100;
-	}
-	else if (res == 4) {
-		txw = ((rand() % (600 - 0 + 1) + 0) - 300) / 100;
-		tyw = -(rand() % (640 - 300 + 1) + 300) / 100;
-	}
-	
 }
 
 
@@ -77,8 +64,14 @@ void PlayerFish::scoreScene(int i)
 
 void PlayerFish::update_animation_move_player(int x, int y)
 {
+	if (m_time < 300) {
+		m_time++;
+	}
+	else {
+		dis = false;
+	}
 	initShape();
-	int v = 3.5;//vận tốc tính theo pixel ban đầu mặc định
+	int v = 7;//vận tốc tính theo pixel ban đầu mặc định
 	float a = (txw + 1.5) * Globals::screenWidth / 3;
 	float b = (1.5 - tyw) * Globals::screenHeight / 3;//toa do vi tri cua player hien tai tinh theo pixel
 	x_temp = a;
@@ -133,8 +126,14 @@ void PlayerFish::update_animation_move_player(int x, int y)
 
 void PlayerFish::update_animation_flash_player(int x, int y)
 {
+	if (m_time < 300) {
+		m_time++;
+	}
+	else {
+		dis = false;
+	}
 	initShape();
-	int v = 9;//vận tốc tính theo pixel ban đầu mặc định
+	int v = 15;//vận tốc tính theo pixel ban đầu mặc định
 	float a = (txw + 1.5) * Globals::screenWidth / 3;
 	float b = (1.5 - tyw) * Globals::screenHeight / 3;//toa do vi tri cua player hien tai tinh theo pixel
 	x_temp = a;

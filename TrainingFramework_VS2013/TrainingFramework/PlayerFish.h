@@ -6,6 +6,8 @@
 class PlayerFish: public Animation2D
 {
 public:
+	int m_time = 201;
+	bool dis = false;
 	PlayerFish();
 	~PlayerFish();
 	int x_temp = (txw + 1.5) * Globals::screenWidth / 3;

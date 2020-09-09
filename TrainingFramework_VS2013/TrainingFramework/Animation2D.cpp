@@ -207,21 +207,21 @@ void Animation2D::SetVectorh(float a, float b, float deltatime)
 	}
 
 	int t;
-	if (a < -200) {
+	if (a < -30) {
 		t = 3;
 		//cout << 3;
 	}
-	else if (a > 1360)
+	else if (a > 1200)
 	{
 		t = 4;
 		//cout << 4;
 	}
-	else if (b > 1170)
+	else if (b > 1000)
 	{
 		t = 2;
 		//cout << 4;
 	}
-	else if (b < -200)
+	else if (b < -30)
 	{
 		t = 1;
 		//cout << 1;
