@@ -22,6 +22,7 @@ public:
 	void set_wvp(Matrix v);
 	void draw();
 	//void draw2D(Matrix Vp);
+	void update();
 
 	void update_world(float s, float x, float y, float z, float tx, float ty, float tz);
 	int textureNum, cubeTextureNum;

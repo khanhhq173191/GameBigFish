@@ -54,11 +54,11 @@ void BotFish::disapear()
 			tyw = -(rand() % (640 - 300 + 1) + 300) / 100;
 		}
 	}
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < 12; i++) {
 		Singleton<SceneManager>::GetInstance()->objects[i + 7].tyw += 0.002;
 	}
 	if (Singleton<SceneManager>::GetInstance()->playerFish[0].bite_wait == 0) {
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < 12; i++) {
 			Singleton<SceneManager>::GetInstance()->objects[i + 7].txw = 1.8;
 			Singleton<SceneManager>::GetInstance()->objects[i + 7].tyw = 1.8;
 		}
@@ -70,20 +70,22 @@ void BotFish::scoreScene(int i)
 	switch (size)
 	{
 	case 1:
-		Singleton<SceneManager>::GetInstance()->objects[i + 7].txw = txw + 0.02;
-		Singleton<SceneManager>::GetInstance()->objects[i + 7].tyw = tyw + 0.02;
-		cout << 1;
-		Singleton<SceneManager>::GetInstance()->point += 5;
-		break;
-	case 3:
-		cout << 3;
+		Singleton<SceneManager>::GetInstance()->objects[i + 7].txw = txw;
+		Singleton<SceneManager>::GetInstance()->objects[i + 7].tyw = tyw;
 		Singleton<SceneManager>::GetInstance()->point += 10;
 		break;
-	case 5:
+	case 3:
+		Singleton<SceneManager>::GetInstance()->objects[i + 11].txw = txw;
+		Singleton<SceneManager>::GetInstance()->objects[i + 11].tyw = tyw;
 		Singleton<SceneManager>::GetInstance()->point += 20;
 		break;
+	case 5:
+		Singleton<SceneManager>::GetInstance()->objects[i + 15].txw = txw;
+		Singleton<SceneManager>::GetInstance()->objects[i + 15].tyw = tyw ;
+		Singleton<SceneManager>::GetInstance()->point += 50;
+		break;
 	case 7:
-		Singleton<SceneManager>::GetInstance()->point += 40;
+		Singleton<SceneManager>::GetInstance()->point += 100;
 		break;
 	default:
 		break;

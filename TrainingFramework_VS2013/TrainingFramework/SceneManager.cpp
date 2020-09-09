@@ -110,29 +110,20 @@ void SceneManager::loadObjects(char *l) {
 		else {
 			fscanf(file, "ID %d\n", &animID);
 			fscanf(file, "MODEL %d\n", &modelID);
-			//anim[animID].models = modelID;
 			botFish[animID].models = modelID;
-			//anim[animID].load_element("../Resources/sprites (1).txt");
 			botFish[animID].load_element("../Resources/sprites (1).txt");
 
 
-			//fscanf(file, "FRAME %d\n", &anim[animID].frameNum);
 			fscanf(file, "FRAME %d\n", &botFish[animID].frameNum);
-			//anim[animID].frame = Singleton<ResourceManager>::GetInstance()->frames[anim[animID].frameNum];
 			botFish[animID].frame = Singleton<ResourceManager>::GetInstance()->frames[botFish[animID].frameNum];
 
 			fscanf(file, "TEXTURES %d\n", &textureNum);
-			/*anim[animID].texture = new int[textureNum];
-			anim[animID].textureNum = textureNum;*/
 			botFish[animID].texture = new int[textureNum];
 			botFish[animID].textureNum = textureNum;
 			for (int j = 0; j < textureNum; j++) {
 				fscanf(file, "TEXTURE %d\n", &textureID);
-				//anim[animID].texture[j] = textureID;
 				botFish[animID].texture[j] = textureID;
 			}
-			/*anim[animID].curent_texture = anim[animID].texture[0];
-			anim[animID].play();*/
 			botFish[animID].curent_texture = botFish[animID].texture[0];
 			botFish[animID].play();
 
@@ -148,7 +139,7 @@ void SceneManager::loadObjects(char *l) {
 			botFish[animID].shaders.m_texture = new int[a];
 			fscanf(file, "SPEED %f\n", &botFish[animID].speed);
 			fscanf(file, "SIZE %d\n", &botFish[animID].size);
-			botFish[animID].vb = 8 - botFish[animID].size;
+			botFish[animID].vb = 8 - botFish[animID].size; // VAN TOC CA BOT
 			fscanf(file, "POSITION %f, %f, %f\n", &botFish[animID].txw, &botFish[animID].tyw, &botFish[animID].tzw);
 			fscanf(file, "ROTATION %f, %f, %f\n", &botFish[animID].rxw, &botFish[animID].ryw, &botFish[animID].rzw);
 			fscanf(file, "SCALE %f, %f, %f\n", &botFish[animID].sxw, &botFish[animID].syw, &botFish[animID].szw);
@@ -161,14 +152,9 @@ void SceneManager::loadObjects(char *l) {
 	fscanf(file, "#CAMERA\nNEAR %f\nFAR %f\nFOV %f\nSPEED %f", &Singleton<Camera>::GetInstance()->nearPlane, &Singleton<Camera>::GetInstance()->farPlane,
 		&Singleton<Camera>::GetInstance()->fov, &Singleton<Camera>::GetInstance()->speed);
 	fclose(file);
-	/*for (int i = 1; i < animNum; i++) {
-		anim[i].tzw = anim[0].tzw - (i * 0.01);
-	}*/
 	for (int i = 1; i < animNum; i++) {
 		botFish[i].tzw = playerFish[0].tzw - (i * 0.01);
 	}
-	
-
 }
 
 void SceneManager::draw() {
@@ -177,65 +163,62 @@ void SceneManager::draw() {
 	for (int i = animNum - 1; i >= 0; i--) {
 		if (i == 0) playerFish[i].draw_anim();
 		else botFish[i].draw_anim();
-		//anim[i].draw_anim();
 	}
 	for (int i = objectNum - 1; i > 0; i--) {
 		objects[i].draw();
 	}
 }
 
+float time = 0;
 void SceneManager::update_animation(float deltaTime) {
+	objects[19].update();
+	objects[20].update();
+	objects[21].update();
+
+
 	for (int i = 0; i < animNum; i++) {
 		if (i == 0) playerFish[i].update(deltaTime);
 		else botFish[i].update(deltaTime);
 	}
-	if (m_time > 0.03) {
-		m_time = 0;
-		for (int i = 1; i < animNum; i++) {
+	if (time > 0.03) {
+		time = 0;
+		for (int i = 1; i < 22; i++) {
 			botFish[i].update_animation_move_boss(deltaTime);
 		}
 	}
 	else {
-		m_time += deltaTime;
+		time += deltaTime;
 	}
 	checkColRecRec();
-	if (!playerFish[0].dis) {
-		checkCoCirCir();
-		checkColRecRecP();
-	}
+	checkCoCirCir();
 	LevelUp(point);
 }
 
-void SceneManager::mouse_animation_move(int x, int y, float deltaTime)
+void SceneManager::mouse_animation_move(int x, int y)
 {
-	if (m_pTime > 0.01) {
-		m_pTime = 0;
 	playerFish[0].update_animation_move_player(x, y);
-	}
-	else {
-		m_pTime += deltaTime;
-	}
 }
 
-void SceneManager::mouse_animation_flash(int x, int y , float deltaTime)
+void SceneManager::mouse_animation_flash(int x, int y)
 {
-	if (m_pTime > 0.01) {
-		m_pTime = 0;
-		playerFish[0].update_animation_flash_player(x, y);
-	}
-	else {
-		m_pTime += deltaTime;
-	}
+	playerFish[0].update_animation_flash_player(x, y);
 }
 
 void SceneManager::LevelUp(int i)
 {
-	if (i > 200) {
+	if (i >= 10 && i < 100) {
 		playerFish[0].size = 4;
 		playerFish[0].sxw = 0.15;
 		playerFish[0].syw = 0.15;
 		playerFish[0].szw = 0.15;
 
+	}
+	else if(i >= 100)
+	{
+		playerFish[0].size = 6;
+		playerFish[0].sxw = 0.18;
+		playerFish[0].syw = 0.18;
+		playerFish[0].szw = 0.18;
 	}
 }
 
@@ -244,9 +227,6 @@ void SceneManager::free() {
 
 bool SceneManager::checkEvent()
 {	
-	/*for (int i = 0; i < animNum; i++) {
-		if (anim[i].checkEvent()) return true;
-	}*/
 	return false;
 }
 
@@ -276,8 +256,23 @@ bool SceneManager::checkCoCirCir()
 
 bool SceneManager::checkColRecRec()
 {
-	for (int i = 1; i < animNum - 1; i++) {
-		for (int j = i + 1; j < animNum; j++) {
+	for (int i = 1; i < animNum; i++) {
+		if (Singleton<Physic>::GetInstance()->checkColRecRec(playerFish[0].rect, botFish[i].rect)) {
+			if (playerFish[0].size > botFish[i].size) {
+				playerFish[0].signal = 3;
+				//playerFish[0].scoreScene(i % 3);
+				if(botFish[i].disapear_wait == 0) botFish[i].scoreScene(i % 4);
+				botFish[i].disapear_wait = 1;
+			}
+			else if (playerFish[0].size < botFish[i].size) {
+				botFish[i].signal = 3;
+				playerFish[0].disapear_wait = 1;
+			}
+		}
+	}
+
+	for (int i = 1; i < animNum; i++) {
+		for (int j = 1; j < animNum; j++) {
 			if (Singleton<Physic>::GetInstance()->checkColRecRec(botFish[i].rect, botFish[j].rect) && i != j) {
 				if (botFish[i].size > botFish[j].size) {
 					botFish[i].signal = 3;
@@ -291,23 +286,4 @@ bool SceneManager::checkColRecRec()
 		}
 	}
 	return true;
-}
-
-void SceneManager::checkColRecRecP()
-{
-	for (int i = 1; i < animNum; i++) {
-		if (Singleton<Physic>::GetInstance()->checkColRecRec(playerFish[0].rect, botFish[i].rect)) {
-			if (playerFish[0].size > botFish[i].size) {
-				playerFish[0].signal = 3;
-				//playerFish[0].scoreScene(i % 3);
-				//botFish[i].scoreScene(i % 3);
-				if (botFish[i].disapear_wait == 0) botFish[i].scoreScene(i % 3);
-				botFish[i].disapear_wait = 1;
-			}
-			else if (playerFish[0].size < botFish[i].size) {
-				botFish[i].signal = 3;
-				playerFish[0].disapear_wait = 1;
-			}
-		}
-	}
 }
