@@ -65,7 +65,7 @@ void BotFish::disapear()
 	}
 }
 
-void BotFish::scoreScene(int i)
+void BotFish::scoreScene(int i)//Âm thanh lúc ăn của cá player cứ cho vào cuối cùng
 {
 	switch (size)
 	{
@@ -90,7 +90,7 @@ void BotFish::scoreScene(int i)
 	default:
 		break;
 	}
-	Singleton<SceneManager>::GetInstance()->point++;
+	//cho Phần âm thanh lúc ăn vào chỗ này
 }
 
 void BotFish::update_animation_move_boss(float deltaTime)

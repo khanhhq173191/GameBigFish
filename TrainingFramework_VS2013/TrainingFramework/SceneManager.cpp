@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "SceneManager.h"
 #include "Singleton.h"
 
@@ -207,7 +207,7 @@ void SceneManager::mouse_animation_move(int x, int y, float deltaTime)
 	}
 }
 
-void SceneManager::mouse_animation_flash(int x, int y, float deltaTime)
+void SceneManager::mouse_animation_flash(int x, int y, float deltaTime)//Âm thanh lúc chạy nhanh
 {
 	if (m_pTime > 0.01) {
 		m_pTime = 0;
@@ -218,7 +218,7 @@ void SceneManager::mouse_animation_flash(int x, int y, float deltaTime)
 	}
 }
 
-void SceneManager::LevelUp(int i)
+void SceneManager::LevelUp(int i)//Load nhạc lúc ăn vào đây
 {
 	if (i >= 10 && i < 100) {
 		playerFish[0].size = 4;
