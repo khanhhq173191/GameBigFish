@@ -1,11 +1,10 @@
-﻿#include "stdafx.h"
+#include "stdafx.h"
 #include "Object.h"
 #include "Camera.h"
 #include "Globals.h"
 #include "Singleton.h"
 #include "ResourceManager.h"
 #include "SceneManager.h"
-#include <time.h>
 
 #define PI 3.141592653589
 
@@ -80,28 +79,6 @@ void Objects::draw()
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	glBindTexture(GL_TEXTURE_2D, 0);
-}
-
-int c = 0;
-float a = 1;
-void Objects::update()
-{	
-	float b;
-	float x = ((rand() % (300 - 0 + 1) + 0) - 150) / 100;
-	float y = ((rand() % (200 - 50 + 1) + 50)) / 100;
-	if (c == 1) {
-		txw = x;
-		tyw = -2.0;
-		a = ((rand() % (200 - 50 + 1) + 50)) / 100; //random độ cao bong bong'
-		b = ((rand() % (200 - 90 + 1) + 90)) / 100000;
-		c = 0;
-	}
-	if (c == 0) {
-		tyw += 0.002;
-		if (tyw > a) {
-			c = 1;
-		}
-	}
 }
 
 //void Objects::draw2D(Matrix Vp)

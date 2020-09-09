@@ -18,7 +18,7 @@ FILE ../Resources/Models/animation.nfg
 ID 8
 FILE ../Resources/Models/background.nfg
 
-#2D Textures: 41
+#2D Textures: 37
 ID 0
 FILE ../Resources/Textures/bg3.png
 TILING CLAMP
@@ -128,19 +128,7 @@ ID 35
 FILE ../Resources/Textures/item4.png
 TILING CLAMP
 ID 36
-FILE ../Resources/Textures/10score.png
-TILING CLAMP
-ID 37
-FILE ../Resources/Textures/20score.png
-TILING CLAMP
-ID 38
-FILE ../Resources/Textures/50score.png
-TILING CLAMP
-ID 39
-FILE ../Resources/Textures/seaweed_idle.png
-TILING CLAMP
-ID 40
-FILE ../Resources/Textures/bubble.png
+FILE ../Resources/Textures/score.png
 TILING CLAMP
 
 

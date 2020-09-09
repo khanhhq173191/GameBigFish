@@ -2,8 +2,7 @@
 #include "PlayerFish.h"
 #include "SceneManager.h"
 #include <time.h>
-bool dis = false;
-float x = 0;
+
 PlayerFish::PlayerFish()
 {
 }
@@ -43,28 +42,15 @@ void PlayerFish::bite()
 
 void PlayerFish::disapear()
 {
-	sxw = sx;
-	syw = sy;
-	szw = sz;
-	int res = rand() % (4 - 1 + 1) + 1;
-	if (res == 1) {
-		srand(time(NULL));
-		txw = -(rand() % (320 - 300 + 1) + 300) / 100;
-		tyw = ((rand() % (640 - 0 + 1) + 0) - 300) / 100;
+	if (disapear_wait == 1) {
+		sxw = sx;
+		syw = sy;
+		szw = sz;
+		txw = ((rand() % (100 - 0 + 1) + 0) - 50) / 100;
+		tyw = 1.7;
+		m_time = 0;
+		dis = true;
 	}
-	else if (res == 2) {
-		txw = (rand() % (320 - 300 + 1) + 300) / 100;
-		tyw = ((rand() % (640 - 0 + 1) + 0) - 300) / 100;
-	}
-	else if (res == 3) {
-		txw = ((rand() % (600 - 0 + 1) + 0) - 300) / 100;
-		tyw = (rand() % (640 - 300 + 1) + 300) / 100;
-	}
-	else if (res == 4) {
-		txw = ((rand() % (600 - 0 + 1) + 0) - 300) / 100;
-		tyw = -(rand() % (640 - 300 + 1) + 300) / 100;
-	}
-	
 }
 
 
@@ -77,35 +63,42 @@ void PlayerFish::scoreScene(int i)
 
 void PlayerFish::update_animation_move_player(int x, int y)
 {
+	if (m_time < 300) {
+		m_time++;
+	}
+	else {
+		dis = false;
+	}
 	initShape();
-	int v = 3.5;//vận tốc tính theo pixel ban đầu mặc định
+	int v = 7;//vận tốc tính theo pixel ban đầu mặc định
 	float a = (txw + 1.5) * Globals::screenWidth / 3;
 	float b = (1.5 - tyw) * Globals::screenHeight / 3;//toa do vi tri cua player hien tai tinh theo pixel
 	x_temp = a;
 	y_temp = b;
 	float j = x - a;//vector chi huong chuyen dong 
 	float k = y - b;
-
 	float cc, d;
 	if ((j < -5 || j > 5) || (k < -5 || k > 5)) {
-		cc = v*(float)j / sqrt(j * j + k * k);
-		d = v*(float)k / sqrt(j * j + k * k);
+	cc = v * (float)j / sqrt(j * j + k * k);
+	d = v * (float)k / sqrt(j * j + k * k);
 
-		a += cc;//vị trí sau khi di chuyển
-		b += d;
+	a += cc;//vị trí sau khi di chuyển
+	b += d;
 
-		txw = ((float)a / Globals::screenWidth) * 3.0 - 1.5;
-		tyw = -(((float)b / Globals::screenHeight) * 3.0 - 1.5);
+	txw = ((float)a / Globals::screenWidth) * 3.0 - 1.5;
+	tyw = -(((float)b / Globals::screenHeight) * 3.0 - 1.5);
 	}
 	else {
 		cc = 0; d = 0;
 	}
-	if (j <= -2 && c == 0) { // bat su kien ca quay dau
+	
+
+	if (j <= -5 && c == 0) { // bat su kien ca quay dau
 		countFrame = 0;
 		c = 1;
 		signal = 1;
 	}
-	else if (j > 2 && c == 1) {
+	else if (j > 5 && c == 1) {
 		countFrame = 0;
 		signal = 1;
 		c = 0;
@@ -133,22 +126,34 @@ void PlayerFish::update_animation_move_player(int x, int y)
 
 void PlayerFish::update_animation_flash_player(int x, int y)
 {
+	if (m_time < 300) {
+		m_time++;
+	}
+	else {
+		dis = false;
+	}
 	initShape();
-	int v = 9;//vận tốc tính theo pixel ban đầu mặc định
+	int v = 15;//vận tốc tính theo pixel ban đầu mặc định
 	float a = (txw + 1.5) * Globals::screenWidth / 3;
 	float b = (1.5 - tyw) * Globals::screenHeight / 3;//toa do vi tri cua player hien tai tinh theo pixel
 	x_temp = a;
 	y_temp = b;
 	float j = x - a;//vector chi huong chuyen dong 
 	float k = y - b;
-	float cc = v * (float)j / sqrt(j * j + k * k);
-	float d = v * (float)k / sqrt(j * j + k * k);
+	float cc, d;
+	if ((j < -5 || j > 5) || (k < -5 || k > 5)) {
+		cc = v * (float)j / sqrt(j * j + k * k);
+		d = v * (float)k / sqrt(j * j + k * k);
+		a += cc;//vị trí sau khi di chuyển
+		b += d;
+		txw = ((float)a / Globals::screenWidth) * 3.0 - 1.5;
+		tyw = -(((float)b / Globals::screenHeight) * 3.0 - 1.5);
+	}
+	else {
+		cc = 0; d = 0;
+	}
 
-	a += cc;//vị trí sau khi di chuyển
-	b += d;
-
-	txw = ((float)a / Globals::screenWidth) * 3.0 - 1.5;
-	tyw = -(((float)b / Globals::screenHeight) * 3.0 - 1.5);
+	
 	if (j <= -5 && c == 0) { // bat su kien ca quay dau
 		countFrame = 0;
 		c = 1;

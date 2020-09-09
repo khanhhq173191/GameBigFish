@@ -56,11 +56,11 @@ void Update ( ESContext *esContext, float deltaTime)
 {	
 	Singleton<Game>::GetInstance()->Update_animation(deltaTime);
 	if (Move) {
-		Singleton<Game>::GetInstance()->mouse_animation_move(a, b);
+		Singleton<Game>::GetInstance()->mouse_animation_move(a, b, deltaTime);
 	}
 
 	if (Flash && TimeFlash < 0.3) {
-	Singleton<Game>::GetInstance()->mouse_animation_flash(m, n);
+	Singleton<Game>::GetInstance()->mouse_animation_flash(m, n, deltaTime);
 	TimeFlash += deltaTime;
 }
 	//Singleton<Game>::GetInstance()->Update(deltaTime);

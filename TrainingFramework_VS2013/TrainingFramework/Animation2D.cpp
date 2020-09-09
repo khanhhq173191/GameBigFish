@@ -148,39 +148,9 @@ void Animation2D::bite()
 
 void Animation2D::disapear()
 {
-	/*sxw = sx;
-	syw = sy;
-	szw = sz;
-	int res = rand() % (4 - 1 + 1) + 1;
-	if (res == 1) {
-		srand(time(NULL));
-		txw = -(rand() % (320 - 300 + 1) + 300) / 100;
-		tyw = ((rand() % (640 - 0 + 1) + 0) - 300) / 100;
-	}
-	else if (res == 2) {
-		txw = (rand() % (320 - 300 + 1) + 300) / 100;
-		tyw = ((rand() % (640 - 0 + 1) + 0) - 300) / 100;
-	}
-	else if (res == 3) {
-		txw = ((rand() % (600 - 0 + 1) + 0) - 300) / 100;
-		tyw = (rand() % (640 - 300 + 1) + 300) / 100;
-	}
-	else if (res == 4) {
-		txw = ((rand() % (600 - 0 + 1) + 0) - 300) / 100;
-		tyw = -(rand() % (640 - 300 + 1) + 300) / 100;
-	}*/
-	
 }
 
 void Animation2D::zoom() {
-	/*if ((sxw >= (sx / 2) || syw >= (sx / 2) || szw >= (sx / 2)) && disapear_wait == 1) {
-		sxw -= (sx / 2);
-		syw -= (sy / 2);
-		szw -= (sz / 2);
-	}
-	if (sxw < (sx / 2) && disapear_wait == 0) {
-		disapear();
-	}*/
 	if(disapear_wait == 1) disapear();
 
 }
@@ -207,21 +177,21 @@ void Animation2D::SetVectorh(float a, float b, float deltatime)
 	}
 
 	int t;
-	if (a < -200) {
+	if (a < -30) {
 		t = 3;
 		//cout << 3;
 	}
-	else if (a > 1360)
+	else if (a > 1200)
 	{
 		t = 4;
 		//cout << 4;
 	}
-	else if (b > 1170)
+	else if (b > 1000)
 	{
 		t = 2;
 		//cout << 4;
 	}
-	else if (b < -200)
+	else if (b < -30)
 	{
 		t = 1;
 		//cout << 1;

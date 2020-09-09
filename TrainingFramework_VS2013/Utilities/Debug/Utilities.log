@@ -1,1 +1,13 @@
-﻿
+﻿  stdafx.cpp
+  TGA.cpp
+  MemoryOperators.cpp
+  MemoryManager.cpp
+  Math.cpp
+c:\users\han.glschool\downloads\gamedev-master-20200908t071102z-001\gamedev-master\trainingframework_vs2013\utilities\math.cpp(10): warning C4244: 'return': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\han.glschool\downloads\gamedev-master-20200908t071102z-001\gamedev-master\trainingframework_vs2013\utilities\math.cpp(104): warning C4244: 'return': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\han.glschool\downloads\gamedev-master-20200908t071102z-001\gamedev-master\trainingframework_vs2013\utilities\math.cpp(208): warning C4244: 'return': conversion from 'double' to 'GLfloat', possible loss of data
+  esUtil_win.cpp
+  esUtil.cpp
+  esShader.cpp
+  Generating Code...
+  Utilities.vcxproj -> C:\Users\han.glschool\Downloads\GameDev-master-20200908T071102Z-001\GameDev-master\TrainingFramework_VS2013\Debug\Utilities.lib

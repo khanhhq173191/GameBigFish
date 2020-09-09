@@ -55,6 +55,5 @@ public:
 	float dtTm;
 	float bite_wait = 0;
 	float speed;
-
 	vector<vector<float>> frames;
 };
