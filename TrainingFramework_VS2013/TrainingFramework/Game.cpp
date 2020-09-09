@@ -78,14 +78,14 @@ void Game::Update_animation(float deltaTime)
 	Singleton<SceneManager>::GetInstance()->update_animation(deltaTime);
 }
 
-void Game::mouse_animation_move(int x, int y, float deltime)
+void Game::mouse_animation_move(int x, int y)
 {
-	Singleton<SceneManager>::GetInstance()->mouse_animation_move(x, y, deltime);
+	Singleton<SceneManager>::GetInstance()->mouse_animation_move(x, y);
 }
 
-void Game::mouse_animation_flash(int x, int y, float deltime)
+void Game::mouse_animation_flash(int x, int y)
 {
-	Singleton<SceneManager>::GetInstance()->mouse_animation_flash(x, y, deltime);
+	Singleton<SceneManager>::GetInstance()->mouse_animation_flash(x, y);
 }
 
 void Game::Key( unsigned char key, bool bIsPressed){
