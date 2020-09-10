@@ -92,7 +92,11 @@ void BotFish::scoreScene(int i)//Âm thanh lúc ăn của cá player cứ cho v�
 	}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	//cho Phần âm thanh lúc ăn vào chỗ này
+=======
+	Singleton<SceneManager>::GetInstance()->point++;
+>>>>>>> parent of c0a1988... nn
 =======
 	Singleton<SceneManager>::GetInstance()->point++;
 >>>>>>> parent of c0a1988... nn
