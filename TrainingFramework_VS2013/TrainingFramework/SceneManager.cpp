@@ -193,9 +193,12 @@ void SceneManager::update_animation(float deltaTime) {
 		checkCoCirCir();
 		checkColRecRecP();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	}
 	else {
 
+=======
+>>>>>>> parent of c0a1988... nn
 =======
 >>>>>>> parent of c0a1988... nn
 	}
@@ -225,8 +228,11 @@ void SceneManager::mouse_animation_flash(int x, int y, float deltaTime)//Âm tha
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void SceneManager::LevelUp(int i)//Load nhạc lúc ăn vào đây
 =======
+=======
+>>>>>>> parent of c0a1988... nn
 void SceneManager::LevelUp(int i)
 >>>>>>> parent of c0a1988... nn
 {
