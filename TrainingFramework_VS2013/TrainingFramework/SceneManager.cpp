@@ -192,11 +192,13 @@ void SceneManager::update_animation(float deltaTime) {
 	if (!playerFish[0].dis) {
 		checkCoCirCir();
 		checkColRecRecP();
+<<<<<<< HEAD
 	}
 	else {
 
+=======
+>>>>>>> parent of c0a1988... nn
 	}
-	checkColRecRec();
 	LevelUp(point);
 }
 
@@ -222,7 +224,11 @@ void SceneManager::mouse_animation_flash(int x, int y, float deltaTime)//Âm tha
 	}
 }
 
+<<<<<<< HEAD
 void SceneManager::LevelUp(int i)//Load nhạc lúc ăn vào đây
+=======
+void SceneManager::LevelUp(int i)
+>>>>>>> parent of c0a1988... nn
 {
 	if (i >= 10 && i < 100) {
 		playerFish[0].size = 4;

@@ -39,7 +39,6 @@ public:
 	Circle cir;
 	model modela;
 	double anim_cursor;
-	int countFrameTransform = 0;
 	int vb; //van toc ca bot
 	int disapear_wait = 0;
 	int size;
