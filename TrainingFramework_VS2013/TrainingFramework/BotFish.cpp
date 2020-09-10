@@ -38,26 +38,26 @@ void BotFish::disapear()
 		int res = rand() % (4 - 1 + 1) + 1;
 		if (res == 1) {
 			srand(time(NULL));
-			txw = -(rand() % (320 - 300 + 1) + 300) / 100;
-			tyw = ((rand() % (640 - 0 + 1) + 0) - 300) / 100;
+			txw = -(rand() % (320 - 300 + 1) + 300) / 100.0000;
+			tyw = ((rand() % (640 - 0 + 1) + 0) - 300) / 100.0000;
 		}
 		else if (res == 2) {
-			txw = (rand() % (320 - 300 + 1) + 300) / 100;
-			tyw = ((rand() % (640 - 0 + 1) + 0) - 300) / 100;
+			txw = (rand() % (320 - 300 + 1) + 300) / 100.0000;
+			tyw = ((rand() % (640 - 0 + 1) + 0) - 300) / 100.0000;
 		}
 		else if (res == 3) {
-			txw = ((rand() % (600 - 0 + 1) + 0) - 300) / 100;
-			tyw = (rand() % (640 - 300 + 1) + 300) / 100;
+			txw = ((rand() % (600 - 0 + 1) + 0) - 300) / 100.0000;
+			tyw = (rand() % (640 - 300 + 1) + 300) / 100.0000;
 		}
 		else if (res == 4) {
-			txw = ((rand() % (600 - 0 + 1) + 0) - 300) / 100;
-			tyw = -(rand() % (640 - 300 + 1) + 300) / 100;
+			txw = ((rand() % (600 - 0 + 1) + 0) - 300) / 100.0000;
+			tyw = -(rand() % (640 - 300 + 1) + 300) / 100.0000;
 		}
 	}
 	for (int i = 0; i < 12; i++) {
 		Singleton<SceneManager>::GetInstance()->objects[i + 7].tyw += 0.002;
 	}
-	if (Singleton<SceneManager>::GetInstance()->playerFish[0].bite_wait == 0) {
+	if (frameCountScore == 12) {
 		for (int i = 0; i < 12; i++) {
 			Singleton<SceneManager>::GetInstance()->objects[i + 7].txw = 1.8;
 			Singleton<SceneManager>::GetInstance()->objects[i + 7].tyw = 1.8;
@@ -90,11 +90,11 @@ void BotFish::scoreScene(int i)
 	default:
 		break;
 	}
-	Singleton<SceneManager>::GetInstance()->point++;
 }
 
 void BotFish::update_animation_move_boss(float deltaTime)
 {
+	frameCountScore++;
 	initShape();
 	float a = (txw + 1.5) * Globals::screenWidth / 3;
 	float b = (1.5 - tyw) * Globals::screenHeight / 3;//toa do vi tri cua player hien tai tinh theo pixel

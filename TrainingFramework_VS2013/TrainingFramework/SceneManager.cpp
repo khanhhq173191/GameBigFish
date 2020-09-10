@@ -152,7 +152,7 @@ void SceneManager::loadObjects(char *l) {
 	fscanf(file, "#CAMERA\nNEAR %f\nFAR %f\nFOV %f\nSPEED %f", &Singleton<Camera>::GetInstance()->nearPlane, &Singleton<Camera>::GetInstance()->farPlane,
 		&Singleton<Camera>::GetInstance()->fov, &Singleton<Camera>::GetInstance()->speed);
 	fclose(file);
-	for (int i = 1; i < animNum; i++) {
+	for (int i = 1; i < animNum-1; i++) {
 		botFish[i].tzw = playerFish[0].tzw - (i * 0.01);
 	}
 }
@@ -160,10 +160,11 @@ void SceneManager::loadObjects(char *l) {
 void SceneManager::draw() {
 	Singleton<Camera>::GetInstance()->set_CamVP();
 	objects[0].draw();
-	for (int i = animNum - 1; i >= 0; i--) {
+	for (int i = animNum - 2; i >= 0; i--) {
 		if (i == 0) playerFish[i].draw_anim();
 		else botFish[i].draw_anim();
 	}
+	botFish[25].draw_anim();
 	for (int i = objectNum - 1; i > 0; i--) {
 		objects[i].draw();
 	}
@@ -174,6 +175,9 @@ void SceneManager::update_animation(float deltaTime) {
 	objects[19].update();
 	objects[20].update();
 	objects[21].update();
+	objects[22].update();
+	objects[23].update();
+
 
 
 	for (int i = 0; i < animNum; i++) {
@@ -192,7 +196,15 @@ void SceneManager::update_animation(float deltaTime) {
 	if (!playerFish[0].dis) {
 		checkCoCirCir();
 		checkColRecRecP();
+		objects[24].txw = 2;
+		objects[24].tyw = 2;
 	}
+	else
+	{
+		objects[24].txw = playerFish[0].txw;
+		objects[24].tyw = playerFish[0].tyw;
+	}
+	checkColRecRec();
 	LevelUp(point);
 }
 
@@ -217,22 +229,45 @@ void SceneManager::mouse_animation_flash(int x, int y, float deltaTime)
 		m_pTime += deltaTime;
 	}
 }
-
+int d = 0;
+int s = 0;
 void SceneManager::LevelUp(int i)
 {
-	if (i >= 10 && i < 100) {
+	if (i >= 10 && i < 100 && d == 0) {
 		playerFish[0].size = 4;
 		playerFish[0].sxw = 0.15;
 		playerFish[0].syw = 0.15;
 		playerFish[0].szw = 0.15;
+		objects[24].sxw = 0.273;
+		objects[24].syw = 0.273;
+		objects[24].szw = 0.273;
+		s = 1;
+		botFish[25].countFrameTransform = 0;
+		d++;
 
 	}
-	else if(i >= 100)
+	else if(i >= 100 && d == 1 )
 	{
 		playerFish[0].size = 6;
 		playerFish[0].sxw = 0.18;
 		playerFish[0].syw = 0.18;
 		playerFish[0].szw = 0.18;
+		objects[24].sxw = 0.306;
+		objects[24].syw = 0.306;
+		objects[24].szw = 0.306;
+		s = 1;
+		botFish[25].countFrameTransform = 0;
+		d++;
+	}
+	if (s == 1) {
+		botFish[25].txw = playerFish[0].txw;
+		botFish[25].tyw = playerFish[0].tyw;
+	}
+	if (botFish[25].countFrameTransform == 10) {
+		botFish[25].txw = 2;
+		botFish[25].tyw = 2;
+		botFish[25].countFrameTransform = 0;
+		s = 0;
 	}
 }
 
@@ -294,8 +329,10 @@ void SceneManager::checkColRecRecP()
 		if (Singleton<Physic>::GetInstance()->checkColRecRec(playerFish[0].rect, botFish[i].rect)) {
 			if (playerFish[0].size > botFish[i].size) {
 				playerFish[0].signal = 3;
-				//playerFish[0].scoreScene(i % 3);
-				if (botFish[i].disapear_wait == 0) botFish[i].scoreScene(i % 4);
+				if (botFish[i].disapear_wait == 0) {
+					botFish[i].scoreScene(i % 4);
+					botFish[i].frameCountScore = 0;
+				}
 				botFish[i].disapear_wait = 1;
 			}
 			else if (playerFish[0].size < botFish[i].size) {
