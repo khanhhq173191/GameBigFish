@@ -83,17 +83,17 @@ void Objects::draw()
 }
 
 int c = 0;
-float a = 1;
+float a = -1.5;
+float b = 0.1;
 void Objects::update()
 {	
-	float b;
-	float x = ((rand() % (300 - 0 + 1) + 0) - 150) / 100;
-	float y = ((rand() % (200 - 50 + 1) + 50)) / 100;
+	float x = ((rand() % (260 - 0 + 1) + 0) - 130) / 100.0000;//random vi tri bong bong'
+	float y = ((rand() % (200 - 50 + 1) + 50)) / 100.0000;
 	if (c == 1) {
 		txw = x;
 		tyw = -2.0;
-		a = ((rand() % (200 - 50 + 1) + 50)) / 100; //random độ cao bong bong'
-		b = ((rand() % (200 - 90 + 1) + 90)) / 100000;
+		a = ((rand() % (200 - 50 + 1) + 50)) / 100.0000; //random độ cao bong bong'
+		b = ((rand() % (200 - 150 + 1) + 150)) / 100000.0000;//random toc do bong bong'
 		c = 0;
 	}
 	if (c == 0) {
@@ -103,10 +103,6 @@ void Objects::update()
 		}
 	}
 }
-
-//void Objects::draw2D(Matrix Vp)
-//{
-//}
 
 void Objects::update_world(float s, float x, float y, float z, float tx, float ty, float tz) {
 	float sw;

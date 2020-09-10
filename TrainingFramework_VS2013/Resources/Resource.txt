@@ -18,7 +18,7 @@ FILE ../Resources/Models/animation.nfg
 ID 8
 FILE ../Resources/Models/background.nfg
 
-#2D Textures: 41
+#2D Textures: 43
 ID 0
 FILE ../Resources/Textures/bg3.png
 TILING CLAMP
@@ -141,6 +141,12 @@ FILE ../Resources/Textures/seaweed_idle.png
 TILING CLAMP
 ID 40
 FILE ../Resources/Textures/bubble.png
+TILING CLAMP
+ID 41
+FILE ../Resources/Textures/effect_immortal.png
+TILING CLAMP
+ID 42
+FILE ../Resources/Textures/effect_transform.png
 TILING CLAMP
 
 

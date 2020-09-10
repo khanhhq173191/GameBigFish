@@ -44,9 +44,6 @@ void PlayerFish::bite()
 void PlayerFish::disapear()//Âm thanh lúc cá xuất hiện cho vào đây
 {
 	if (disapear_wait == 1) {
-		sxw = sx;
-		syw = sy;
-		szw = sz;
 		txw = ((rand() % (100 - 0 + 1) + 0) - 50) / 100;
 		tyw = 1.7;
 		m_time = 0;

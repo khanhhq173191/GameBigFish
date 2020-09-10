@@ -24,6 +24,7 @@ public:
 	PlayerFish* playerFish;
 	BotFish* botFish;
 	int objectNum;
+	int countFrameScene = 0;
 	//int textureNum;
 	//int cubeTextureNum;
 	int animNum;
