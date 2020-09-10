@@ -194,7 +194,8 @@ void SceneManager::update_animation(float deltaTime) {
 		checkColRecRecP();
 	}
 	else {
-
+		objects[24].txw = playerFish[0].txw;
+		objects[24].tyw = playerFish[0].tyw;
 	}
 	checkColRecRec();
 	LevelUp(point);
