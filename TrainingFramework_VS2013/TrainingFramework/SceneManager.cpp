@@ -14,10 +14,13 @@ SceneManager::~SceneManager()
 		delete[] objects[i].shaders.m_texture;
 	}
 	for (int i = 0; i < animNum; i++) {
-		delete[] anim[i].texture;
-		delete[] anim[i].cubeTexture;
-		delete[] anim[i].shaders.m_texture;
+		delete[] botFish[i].texture;
+		delete[] botFish[i].cubeTexture;
+		delete[] botFish[i].shaders.m_texture;
 	}
+	delete[] playerFish[0].texture;
+	delete[] playerFish[0].cubeTexture;
+	delete[] playerFish[0].shaders.m_texture;
 	delete[] objects;
 	delete[] anim;
 	delete[] botFish;

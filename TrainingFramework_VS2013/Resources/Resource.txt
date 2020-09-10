@@ -18,7 +18,7 @@ FILE ../Resources/Models/animation.nfg
 ID 8
 FILE ../Resources/Models/background.nfg
 
-#2D Textures: 43
+#2D Textures: 53
 ID 0
 FILE ../Resources/Textures/bg3.png
 TILING CLAMP
@@ -147,6 +147,36 @@ FILE ../Resources/Textures/effect_immortal.png
 TILING CLAMP
 ID 42
 FILE ../Resources/Textures/effect_transform.png
+TILING CLAMP
+ID 43
+FILE ../Resources/Textures/0number.png
+TILING CLAMP
+ID 44
+FILE ../Resources/Textures/1number.png
+TILING CLAMP
+ID 45
+FILE ../Resources/Textures/2number.png
+TILING CLAMP
+ID 46
+FILE ../Resources/Textures/3number.png
+TILING CLAMP
+ID 47
+FILE ../Resources/Textures/4number.png
+TILING CLAMP
+ID 48
+FILE ../Resources/Textures/5number.png
+TILING CLAMP
+ID 49
+FILE ../Resources/Textures/6number.png
+TILING CLAMP
+ID 50
+FILE ../Resources/Textures/7number.png
+TILING CLAMP
+ID 51
+FILE ../Resources/Textures/8number.png
+TILING CLAMP
+ID 52
+FILE ../Resources/Textures/9number.png
 TILING CLAMP
 
 
