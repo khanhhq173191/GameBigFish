@@ -193,6 +193,10 @@ void SceneManager::update_animation(float deltaTime) {
 		checkCoCirCir();
 		checkColRecRecP();
 	}
+	else {
+
+	}
+	checkColRecRec();
 	LevelUp(point);
 }
 
