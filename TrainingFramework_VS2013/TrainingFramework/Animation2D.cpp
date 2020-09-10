@@ -103,6 +103,7 @@ void Animation2D::update(float deltaTime)
 		modela.vertices[3].uv.x = (modela.vertices[3].uv.x + frame[2]); modela.vertices[3].uv.y = frame[1];
 
 		countFrame ++;
+		countFrameTransform++;
 		//cout << countFrame;
 
 		glBindBuffer(GL_ARRAY_BUFFER, modela.vboId);

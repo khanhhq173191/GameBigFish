@@ -1,16 +1,1 @@
-﻿  Animation2D.cpp
-c:\users\han.glschool\documents\github\nn\trainingframework_vs2013\trainingframework\camera.h(22): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\han.glschool\documents\github\nn\trainingframework_vs2013\trainingframework\animation2d.cpp(7): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\han.glschool\documents\github\nn\trainingframework_vs2013\trainingframework\animation2d.cpp(8): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\han.glschool\documents\github\nn\trainingframework_vs2013\trainingframework\animation2d.cpp(115): warning C4101: 'index': unreferenced local variable
-c:\users\han.glschool\documents\github\nn\trainingframework_vs2013\trainingframework\animation2d.cpp(274): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\han.glschool\documents\github\nn\trainingframework_vs2013\trainingframework\animation2d.cpp(275): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\han.glschool\documents\github\nn\trainingframework_vs2013\trainingframework\animation2d.cpp(276): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\han.glschool\documents\github\nn\trainingframework_vs2013\trainingframework\animation2d.cpp(277): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\han.glschool\documents\github\nn\trainingframework_vs2013\trainingframework\animation2d.cpp(278): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\han.glschool\documents\github\nn\trainingframework_vs2013\trainingframework\animation2d.cpp(279): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\han.glschool\documents\github\nn\trainingframework_vs2013\trainingframework\animation2d.cpp(280): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\han.glschool\documents\github\nn\trainingframework_vs2013\trainingframework\animation2d.cpp(285): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\han.glschool\documents\github\nn\trainingframework_vs2013\trainingframework\animation2d.cpp(286): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-  TrainingFramework.vcxproj -> C:\Users\han.glschool\Documents\GitHub\nn\TrainingFramework_VS2013\\BIN\TrainingFramework.exe
-  TrainingFramework.vcxproj -> C:\Users\han.glschool\Documents\GitHub\nn\TrainingFramework_VS2013\\BIN\TrainingFramework.pdb (Full PDB)
+﻿

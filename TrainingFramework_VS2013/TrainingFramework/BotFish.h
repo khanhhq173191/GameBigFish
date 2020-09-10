@@ -9,6 +9,7 @@ public:
 	~BotFish();
 	int x_temp = (txw + 1.5) * Globals::screenWidth / 3;
 	int y_temp = (1.5 - tyw) * Globals::screenHeight / 3;
+	int frameCountScore = 0;
 	void bite();
 	void disapear();
 	void scoreScene(int);
