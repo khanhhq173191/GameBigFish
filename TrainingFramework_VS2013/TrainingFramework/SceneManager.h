@@ -6,10 +6,12 @@
 #include "physic.h"
 #include "PlayerFish.h"
 #include "BotFish.h"
+#include "EffectAnim.h"
 #include <vector>
 class Animation2D;
 class PlayerFish;
 class BotFish;
+class EffectAnim;
 
 using namespace std;
 
@@ -19,15 +21,21 @@ public:
 	float m_time = 0;
 	float m_pTime = 0;
 	int point = 0;
+	int d = 0;
+	int s = 0;
 	Objects* objects;
 	Animation2D* anim;
 	PlayerFish* playerFish;
 	BotFish* botFish;
+	BotFish* modelBotFish;
+	EffectAnim* effectAnim;
+	int effectAnimNum;
 	int objectNum;
 	int countFrameScene = 0;
-	//int textureNum;
-	//int cubeTextureNum;
+	int animNumLevel;
 	int animNum;
+	int modelBotFishNum;
+	void setLevel();
 	void loadObjects(char *l);
 	void draw();
 	void update_animation(float);
@@ -35,6 +43,7 @@ public:
 	void mouse_animation_flash(int x, int y, float deltatime);
 	void LevelUp(int i);
 	void free();
+	void initBotFish();
 	bool checkEvent();
 	SceneManager();
 	~SceneManager();

@@ -78,6 +78,9 @@
     <ClCompile Include="BotFish.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="EffectAnim.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals.h">
@@ -144,6 +147,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PlayerFish.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectAnim.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -250,6 +256,9 @@
       <Filter>Resources</Filter>
     </Text>
     <Text Include="..\Resources\sprites (1).txt">
+      <Filter>Resources</Filter>
+    </Text>
+    <Text Include="..\Resources\modelfish.txt">
       <Filter>Resources</Filter>
     </Text>
   </ItemGroup>
