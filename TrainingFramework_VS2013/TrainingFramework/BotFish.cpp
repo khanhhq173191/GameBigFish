@@ -32,9 +32,6 @@ void BotFish::bite()
 void BotFish::disapear()
 {
 	if (disapear_wait == 1) {
-		sxw = sx;
-		syw = sy;
-		szw = sz;
 		int res = rand() % (4 - 1 + 1) + 1;
 		if (res == 1) {
 			srand(time(NULL));

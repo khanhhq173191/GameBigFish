@@ -54,7 +54,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\Users\han.glschool\Documents\GitHub\nn\TrainingFramework_VS2013\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -98,6 +98,7 @@
     <ClCompile Include="BotFish.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Cricle.cpp" />
+    <ClCompile Include="EffectAnim.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Matran.cpp" />
     <ClCompile Include="model.cpp" />
@@ -121,6 +122,7 @@
     <ClInclude Include="BotFish.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Cricle.h" />
+    <ClInclude Include="EffectAnim.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Matran.h" />
@@ -182,6 +184,7 @@
     <Image Include="..\Resources\Textures\Woman2.tga" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="..\Resources\modelfish.txt" />
     <Text Include="..\Resources\Resource.txt" />
     <Text Include="..\Resources\Scene.txt" />
     <Text Include="..\Resources\sprites (1).txt" />
