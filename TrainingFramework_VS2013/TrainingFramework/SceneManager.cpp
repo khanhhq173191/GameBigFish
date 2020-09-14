@@ -596,6 +596,14 @@ void SceneManager::mouse_animation_flash(int x, int y, float deltaTime)
 		m_pTime += deltaTime;
 	}
 }
+void SceneManager::updateScore()
+{
+	int a = point;
+	for (int i = 0; i < 6; i++) {
+		objects[25 + i].texture[0] = 43 + (a % 10);
+		a = a / 10;
+	}
+}
 void SceneManager::LevelUp(int i)
 {
 	if (i >= 10 && i < 100 && d == 0) {

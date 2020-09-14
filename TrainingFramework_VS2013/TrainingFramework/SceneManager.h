@@ -18,8 +18,6 @@ using namespace std;
 class SceneManager
 {
 public:
-	int d = 0;
-	int s = 0;
 	float m_time = 0;
 	float m_pTime = 0;
 	int point = 0;
