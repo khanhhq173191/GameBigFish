@@ -73,19 +73,23 @@ void BotFish::scoreScene(int i)
 		Singleton<SceneManager>::GetInstance()->objects[i + 7].txw = txw;
 		Singleton<SceneManager>::GetInstance()->objects[i + 7].tyw = tyw;
 		Singleton<SceneManager>::GetInstance()->point += 10;
+		Singleton<SceneManager>::GetInstance()->updateScore();
 		break;
 	case 3:
 		Singleton<SceneManager>::GetInstance()->objects[i + 11].txw = txw;
 		Singleton<SceneManager>::GetInstance()->objects[i + 11].tyw = tyw;
 		Singleton<SceneManager>::GetInstance()->point += 20;
+		Singleton<SceneManager>::GetInstance()->updateScore();
 		break;
 	case 5:
 		Singleton<SceneManager>::GetInstance()->objects[i + 15].txw = txw;
 		Singleton<SceneManager>::GetInstance()->objects[i + 15].tyw = tyw ;
 		Singleton<SceneManager>::GetInstance()->point += 50;
+		Singleton<SceneManager>::GetInstance()->updateScore();
 		break;
 	case 7:
 		Singleton<SceneManager>::GetInstance()->point += 100;
+		Singleton<SceneManager>::GetInstance()->updateScore();
 		break;
 	default:
 		break;

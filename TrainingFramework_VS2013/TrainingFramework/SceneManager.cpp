@@ -142,7 +142,7 @@ void SceneManager::loadObjects(char *l) {
 			botFish[animID].shaders.m_texture = new int[a];
 			fscanf(file, "SPEED %f\n", &botFish[animID].speed);
 			fscanf(file, "SIZE %d\n", &botFish[animID].size);
-			botFish[animID].vb = 8 - botFish[animID].size; // VAN TOC CA BOT
+			botFish[animID].vb = 10 - botFish[animID].size; // VAN TOC CA BOT
 			fscanf(file, "POSITION %f, %f, %f\n", &botFish[animID].txw, &botFish[animID].tyw, &botFish[animID].tzw);
 			fscanf(file, "ROTATION %f, %f, %f\n", &botFish[animID].rxw, &botFish[animID].ryw, &botFish[animID].rzw);
 			fscanf(file, "SCALE %f, %f, %f\n", &botFish[animID].sxw, &botFish[animID].syw, &botFish[animID].szw);
@@ -232,11 +232,21 @@ void SceneManager::mouse_animation_flash(int x, int y, float deltaTime)
 		m_pTime += deltaTime;
 	}
 }
-int d = 0;
-int s = 0;
+
+void SceneManager::updateScore()
+{
+	int a = point;
+	for (int i = 0; i < 6; i++) {
+		objects[25 + i].texture[0] = 43 + (a % 10);
+		a = a / 10;
+	}
+}
+
+
+
 void SceneManager::LevelUp(int i)
 {
-	if (i >= 10 && i < 100 && d == 0) {
+	if (i >= 100 && i < 1000 && d == 0) {
 		playerFish[0].size = 4;
 		playerFish[0].sxw = 0.15;
 		playerFish[0].syw = 0.15;
@@ -249,7 +259,7 @@ void SceneManager::LevelUp(int i)
 		d++;
 
 	}
-	else if(i >= 100 && d == 1 )
+	else if(i >= 1000 && d == 1 )
 	{
 		playerFish[0].size = 6;
 		playerFish[0].sxw = 0.18;

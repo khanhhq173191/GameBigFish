@@ -16,6 +16,8 @@ using namespace std;
 class SceneManager
 {
 public:
+	int d = 0;
+	int s = 0;
 	float m_time = 0;
 	float m_pTime = 0;
 	int point = 0;
@@ -33,6 +35,7 @@ public:
 	void update_animation(float);
 	void mouse_animation_move(int x, int y, float deltatime);
 	void mouse_animation_flash(int x, int y, float deltatime);
+	void updateScore();
 	void LevelUp(int i);
 	void free();
 	bool checkEvent();
