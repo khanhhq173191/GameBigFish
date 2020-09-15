@@ -32,9 +32,6 @@ void BotFish::bite()
 void BotFish::disapear()
 {
 	if (disapear_wait == 1) {
-		sxw = sx;
-		syw = sy;
-		szw = sz;
 		int res = rand() % (4 - 1 + 1) + 1;
 		if (res == 1) {
 			srand(time(NULL));
@@ -67,30 +64,29 @@ void BotFish::disapear()
 
 void BotFish::scoreScene(int i)
 {
-	//Âm thanh lúc ăn của cá player cứ cho vào cuối cùng
 	switch (size)
 	{
 	case 1:
 		Singleton<SceneManager>::GetInstance()->objects[i + 7].txw = txw;
 		Singleton<SceneManager>::GetInstance()->objects[i + 7].tyw = tyw;
 		Singleton<SceneManager>::GetInstance()->point += 10;
-		Singleton<Game>::GetInstance()->Eat = true;
+		Singleton<SceneManager>::GetInstance()->updateScore();
 		break;
 	case 3:
 		Singleton<SceneManager>::GetInstance()->objects[i + 11].txw = txw;
 		Singleton<SceneManager>::GetInstance()->objects[i + 11].tyw = tyw;
 		Singleton<SceneManager>::GetInstance()->point += 20;
-		Singleton<Game>::GetInstance()->Eat = true;
+		Singleton<SceneManager>::GetInstance()->updateScore();
 		break;
 	case 5:
 		Singleton<SceneManager>::GetInstance()->objects[i + 15].txw = txw;
 		Singleton<SceneManager>::GetInstance()->objects[i + 15].tyw = tyw ;
 		Singleton<SceneManager>::GetInstance()->point += 50;
-		Singleton<Game>::GetInstance()->Eat = true;
+		Singleton<SceneManager>::GetInstance()->updateScore();
 		break;
 	case 7:
 		Singleton<SceneManager>::GetInstance()->point += 100;
-		Singleton<Game>::GetInstance()->Eat = true;
+		Singleton<SceneManager>::GetInstance()->updateScore();
 		break;
 	default:
 		break;
