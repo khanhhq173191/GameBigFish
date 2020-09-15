@@ -4,7 +4,7 @@ FILE ../Resources/Models/animation.nfg
 ID 1
 FILE ../Resources/Models/background.nfg
 
-#2D Textures: 62
+#2D Textures: 63
 ID 0
 FILE ../Resources/Textures/bg3.png
 TILING CLAMP
@@ -190,6 +190,8 @@ FILE ../Resources/Textures/f7_bite_R.png
 TILING CLAMP
 ID 61
 FILE ../Resources/Textures/f7_bite_L.png
+ID 62
+FILE ../Resources/Textures/tym.png
 
 
 

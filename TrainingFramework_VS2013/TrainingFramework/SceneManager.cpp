@@ -253,7 +253,6 @@ void SceneManager::initBotFish()
 		botFish[i].shaders.m_texture = new int[a];
 		fscanf(file, "SPEED %f\n", &botFish[i].speed);
 		fscanf(file, "SIZE %d\n", &botFish[i].size);
-		botFish[i].vb = 8 - botFish[i].size; // VAN TOC CA BOT
 		fscanf(file, "POSITION %f, %f, %f\n", &botFish[i].txw, &botFish[i].tyw, &botFish[i].tzw);
 		fscanf(file, "ROTATION %f, %f, %f\n", &botFish[i].rxw, &botFish[i].ryw, &botFish[i].rzw);
 		fscanf(file, "SCALE %f, %f, %f\n", &botFish[i].sxw, &botFish[i].syw, &botFish[i].szw);
@@ -337,12 +336,15 @@ void SceneManager::initBotFish()
 			botFish[i].tyw = -(rand() % (640 - 300 + 1) + 300) / 100.0000;
 		}
 	}
+	for (int i = 0; i < animNumLevel; i++) {
+		botFish[i].vb = 10 - botFish[i].size;
+	}
 }
 
 void SceneManager::setLevel()
 {
 	if (d == 0) {
-		animNumLevel = 26;
+		animNumLevel = 28;
 		for (int i = 20; i < 21; i++) {
 			botFish[i].frameNum = modelBotFish[1].frameNum;
 			botFish[i].texture = modelBotFish[1].texture;
@@ -393,7 +395,7 @@ void SceneManager::setLevel()
 				botFish[i].tyw = -(rand() % (640 - 300 + 1) + 300) / 100.0000;
 			}
 		}
-		for (int i = 23; i < 26; i++) {
+		for (int i = 23; i < 28; i++) {
 			botFish[i].frameNum = modelBotFish[3].frameNum;
 			botFish[i].texture = modelBotFish[3].texture;
 			botFish[i].speed = modelBotFish[3].speed;
@@ -418,37 +420,14 @@ void SceneManager::setLevel()
 				botFish[i].txw = ((rand() % (600 - 0 + 1) + 0) - 300) / 100.0000;
 				botFish[i].tyw = -(rand() % (640 - 300 + 1) + 300) / 100.0000;
 			}
+		}
+		for (int i = 20; i < animNumLevel; i++) {
+			botFish[i].vb = 10 - botFish[i].size;
 		}
 	}
 	else if (d == 1) {
-		animNumLevel = 30;
-		for (int i = 26; i < 27; i++) {
-			botFish[i].frameNum = modelBotFish[3].frameNum;
-			botFish[i].texture = modelBotFish[3].texture;
-			botFish[i].speed = modelBotFish[3].speed;
-			botFish[i].size = modelBotFish[3].size;
-			botFish[i].sxw = modelBotFish[3].sxw; botFish[i].syw = modelBotFish[3].syw; botFish[i].szw = modelBotFish[3].szw;
-
-			int res = rand() % (4 - 1 + 1) + 1;
-			if (res == 1) {
-				srand(time(NULL));
-				botFish[i].txw = -(rand() % (320 - 300 + 1) + 300) / 100.0000;
-				botFish[i].tyw = ((rand() % (640 - 0 + 1) + 0) - 300) / 100.0000;
-			}
-			else if (res == 2) {
-				botFish[i].txw = (rand() % (320 - 300 + 1) + 300) / 100.0000;
-				botFish[i].tyw = ((rand() % (640 - 0 + 1) + 0) - 300) / 100.0000;
-			}
-			else if (res == 3) {
-				botFish[i].txw = ((rand() % (600 - 0 + 1) + 0) - 300) / 100.0000;
-				botFish[i].tyw = (rand() % (640 - 300 + 1) + 300) / 100.0000;
-			}
-			else if (res == 4) {
-				botFish[i].txw = ((rand() % (600 - 0 + 1) + 0) - 300) / 100.0000;
-				botFish[i].tyw = -(rand() % (640 - 300 + 1) + 300) / 100.0000;
-			}
-		}
-		for (int i = 27; i < 30; i++) {
+		animNumLevel = 33;
+		for (int i = 28; i < 33; i++) {
 			//cout << animNumLevel << endl;
 			botFish[i].frameNum = modelBotFish[4].frameNum;
 			botFish[i].texture = modelBotFish[4].texture;
@@ -475,10 +454,13 @@ void SceneManager::setLevel()
 				botFish[i].tyw = -(rand() % (640 - 300 + 1) + 300) / 100.0000;
 			}
 		}
+		for (int i = 28; i < animNumLevel; i++) {
+			botFish[i].vb = 10 - botFish[i].size;
+		}
 	}
 	else if (d == 2) {
-	animNumLevel = 32;
-	for (int i = 30; i < 32; i++) {
+	animNumLevel = 37;
+	for (int i = 33; i < 37; i++) {
 		botFish[i].frameNum = modelBotFish[5].frameNum;
 		botFish[i].texture = modelBotFish[5].texture;
 		botFish[i].speed = modelBotFish[5].speed;
@@ -504,13 +486,18 @@ void SceneManager::setLevel()
 			botFish[i].tyw = -(rand() % (640 - 300 + 1) + 300) / 100.0000;
 		}
 	}
+	for (int i = 30; i < animNumLevel; i++) {
+		botFish[i].vb = 7;
+	}
+	for (int i = 0; i < 30; i++) {
+		botFish[i].vb = 9 - botFish[i].size + 4;
+	}
 }
 }
 
 void SceneManager::draw() {
 	Singleton<Camera>::GetInstance()->set_CamVP();
 	objects[0].draw();
-	cout << animNumLevel << endl;
 	for (int i = animNumLevel - 1; i >= 0; i--) {
 		botFish[i].draw_anim();
 	}
@@ -561,6 +548,129 @@ void SceneManager::update_animation(float deltaTime) {
 	}
 	checkColRecRec();
 	LevelUp(point);
+	GameOver();
+}
+
+bool SceneManager::GameOver() {
+	if (playerFish[0].life == 4) {
+		objects[32].txw = 0.0; objects[32].tyw = 0.0;
+		playerFish[0].txw = 2.5; playerFish[0].tyw = 2.5;
+		playerFish[0].v = 0;
+		return true;
+	}
+	return false;
+}
+
+void SceneManager::OverDie()
+{
+	if (playerFish[0].life == 4) {
+		playerFish[0].txw = 2.5;
+		playerFish[0].tyw = 2.5;
+	}
+}
+
+void SceneManager::NewGame()
+{
+	playerFish[0].size = 2;
+	playerFish[0].txw = 0.0; playerFish[0].tyw = 0.0;
+	playerFish[0].sxw = 0.11; playerFish[0].syw = 0.11; playerFish[0].szw = 0.11;
+	objects[32].txw = 2.5; objects[32].tyw = 2.5;
+	objects[24].sxw = 0.2; objects[24].syw = 0.2; objects[24].szw = 0.2;
+	playerFish[0].frame[4] = 75;
+	playerFish[0].frame[5] = 57;
+	playerFish[0].frame[6] = 70;
+	playerFish[0].life = 0;
+	for (int i = 0; i < 4; i++) {
+		objects[34 + i].txw = -1.4 + 0.12 * i;
+		objects[34 + i].tyw = 1.4;
+	}
+	point = 0;
+
+	animNumLevel = 20;
+	for (int i = 0; i < 12; i++) {
+		botFish[i].frameNum = modelBotFish[1].frameNum;
+		botFish[i].texture = modelBotFish[1].texture;
+		botFish[i].speed = modelBotFish[1].speed;
+		botFish[i].size = modelBotFish[1].size;
+		botFish[i].sxw = modelBotFish[1].sxw; botFish[i].syw = modelBotFish[1].syw; botFish[i].szw = modelBotFish[1].szw;
+		int res = rand() % (4 - 1 + 1) + 1;
+		if (res == 1) {
+			srand(time(NULL));
+			botFish[i].txw = -(rand() % (320 - 300 + 1) + 300) / 100.0000;
+			botFish[i].tyw = ((rand() % (640 - 0 + 1) + 0) - 300) / 100.0000;
+		}
+		else if (res == 2) {
+			botFish[i].txw = (rand() % (320 - 300 + 1) + 300) / 100.0000;
+			botFish[i].tyw = ((rand() % (640 - 0 + 1) + 0) - 300) / 100.0000;
+		}
+		else if (res == 3) {
+			botFish[i].txw = ((rand() % (600 - 0 + 1) + 0) - 300) / 100.0000;
+			botFish[i].tyw = (rand() % (640 - 300 + 1) + 300) / 100.0000;
+		}
+		else if (res == 4) {
+			botFish[i].txw = ((rand() % (600 - 0 + 1) + 0) - 300) / 100.0000;
+			botFish[i].tyw = -(rand() % (640 - 300 + 1) + 300) / 100.0000;
+		}
+	}
+	for (int i = 12; i < 18; i++) {
+		botFish[i].frameNum = modelBotFish[2].frameNum;
+		botFish[i].texture = modelBotFish[2].texture;
+		botFish[i].speed = modelBotFish[2].speed;
+		botFish[i].size = modelBotFish[2].size;
+		botFish[i].sxw = modelBotFish[2].sxw; botFish[i].syw = modelBotFish[2].syw; botFish[i].szw = modelBotFish[2].szw;
+		playerFish[0].frame[4] = 75;
+		playerFish[0].frame[5] = 57;
+		int res = rand() % (4 - 1 + 1) + 1;
+		if (res == 1) {
+			srand(time(NULL));
+			botFish[i].txw = -(rand() % (320 - 300 + 1) + 300) / 100.0000;
+			botFish[i].tyw = ((rand() % (640 - 0 + 1) + 0) - 300) / 100.0000;
+		}
+		else if (res == 2) {
+			botFish[i].txw = (rand() % (320 - 300 + 1) + 300) / 100.0000;
+			botFish[i].tyw = ((rand() % (640 - 0 + 1) + 0) - 300) / 100.0000;
+		}
+		else if (res == 3) {
+			botFish[i].txw = ((rand() % (600 - 0 + 1) + 0) - 300) / 100.0000;
+			botFish[i].tyw = (rand() % (640 - 300 + 1) + 300) / 100.0000;
+		}
+		else if (res == 4) {
+			botFish[i].txw = ((rand() % (600 - 0 + 1) + 0) - 300) / 100.0000;
+			botFish[i].tyw = -(rand() % (640 - 300 + 1) + 300) / 100.0000;
+		}
+	}
+	for (int i = 18; i < 20; i++) {
+		botFish[i].frameNum = modelBotFish[3].frameNum;
+		botFish[i].texture = modelBotFish[3].texture;
+		botFish[i].speed = modelBotFish[3].speed;
+		botFish[i].size = modelBotFish[3].size;
+		botFish[i].sxw = modelBotFish[3].sxw; botFish[i].syw = modelBotFish[3].syw; botFish[i].szw = modelBotFish[3].szw;
+
+		int res = rand() % (4 - 1 + 1) + 1;
+		if (res == 1) {
+			srand(time(NULL));
+			botFish[i].txw = -(rand() % (320 - 300 + 1) + 300) / 100.0000;
+			botFish[i].tyw = ((rand() % (640 - 0 + 1) + 0) - 300) / 100.0000;
+		}
+		else if (res == 2) {
+			botFish[i].txw = (rand() % (320 - 300 + 1) + 300) / 100.0000;
+			botFish[i].tyw = ((rand() % (640 - 0 + 1) + 0) - 300) / 100.0000;
+		}
+		else if (res == 3) {
+			botFish[i].txw = ((rand() % (600 - 0 + 1) + 0) - 300) / 100.0000;
+			botFish[i].tyw = (rand() % (640 - 300 + 1) + 300) / 100.0000;
+		}
+		else if (res == 4) {
+			botFish[i].txw = ((rand() % (600 - 0 + 1) + 0) - 300) / 100.0000;
+			botFish[i].tyw = -(rand() % (640 - 300 + 1) + 300) / 100.0000;
+		}
+	}
+	for (int i = 20; i < animNum; i++) {
+		botFish[i].txw = -2.5; botFish[i].tyw = 2.5;
+		botFish[i].vb = 0.0;
+		botFish[i].size = 0;
+	}
+	playerFish[0].v = 7;
 }
 
 void SceneManager::mouse_animation_move(int x, int y, float deltaTime)
@@ -576,6 +686,7 @@ void SceneManager::mouse_animation_move(int x, int y, float deltaTime)
 
 void SceneManager::mouse_animation_flash(int x, int y, float deltaTime)
 {
+	Singleton<Game>::GetInstance()->Flash = true;
 	if (m_pTime > 0.01) {
 		m_pTime = 0;
 		playerFish[0].update_animation_flash_player(x, y);
@@ -594,7 +705,7 @@ void SceneManager::updateScore()
 }
 void SceneManager::LevelUp(int i)
 {
-	if (i >= 10 && i < 100 && d == 0) {
+	if (i >= 200 && i < 500 && d == 0) {
 		playerFish[0].size = 4;
 		playerFish[0].sxw = 0.15;
 		playerFish[0].syw = 0.15;
@@ -602,13 +713,17 @@ void SceneManager::LevelUp(int i)
 		objects[24].sxw = 0.273;
 		objects[24].syw = 0.273;
 		objects[24].szw = 0.273;
+		playerFish[0].frame[4] = 102;
+		playerFish[0].frame[5] = 77;
+		playerFish[0].frame[6] = 95;
 		s = 1;
 		effectAnim[3].countFrameTransform = 0;
 		effectAnim[3].play();
 		setLevel();
 		d++;
+		Singleton<Game>::GetInstance()->LevelUp = true;
 	}
-	else if(i >= 100 && i < 150 && d == 1 )
+	else if(i >= 500 && i < 1200 && d == 1 )
 	{
 		playerFish[0].size = 6;
 		playerFish[0].sxw = 0.18;
@@ -617,13 +732,17 @@ void SceneManager::LevelUp(int i)
 		objects[24].sxw = 0.306;
 		objects[24].syw = 0.306;
 		objects[24].szw = 0.306;
+		playerFish[0].frame[4] = 122;
+		playerFish[0].frame[5] = 92;
+		playerFish[0].frame[6] = 114;
 		s = 1;
 		effectAnim[3].countFrameTransform = 0;
 		effectAnim[3].play();
 		setLevel();
 		d++;
+		Singleton<Game>::GetInstance()->LevelUp = true;
 	}
-	else if (i >= 150 && d == 2) {
+	else if (i >= 2000 && d == 2) {
 		playerFish[0].size = 8;
 		playerFish[0].sxw = 0.20;
 		playerFish[0].syw = 0.20;
@@ -631,11 +750,15 @@ void SceneManager::LevelUp(int i)
 		objects[24].sxw = 0.34;
 		objects[24].syw = 0.34;
 		objects[24].szw = 0.34;
+		playerFish[0].frame[4] = 135;
+		playerFish[0].frame[5] = 102;
+		playerFish[0].frame[6] = 126;
 		s = 1;
 		effectAnim[3].countFrameTransform = 0;
 		effectAnim[3].play();
 		setLevel();
 		d++;
+		Singleton<Game>::GetInstance()->LevelUp = true;
 	}
 	if (s == 1) {
 		effectAnim[3].txw = playerFish[0].txw;

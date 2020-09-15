@@ -8,6 +8,7 @@
 class Game
 {
 public:
+	bool Eat = false, Flash = false, LevelUp = false, Disapear = false, Newgm = false;
 	bool MoveR = false, MoveL = false, MoveU = false, MoveD = false, MoveF = false, MoveB = false;
 	bool RotateL = false, RotateR = false, RotateU = false, RotateD = false;
 	Game(void);

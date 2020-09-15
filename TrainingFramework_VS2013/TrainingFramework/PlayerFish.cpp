@@ -48,6 +48,11 @@ void PlayerFish::disapear()
 		tyw = 1.7;
 		m_time = 0;
 		dis = true;
+		Singleton<Game>::GetInstance()->Disapear = true;
+		life++;
+		Singleton<SceneManager>::GetInstance()->objects[38 - life].txw = 5;
+		Singleton<SceneManager>::GetInstance()->objects[38 - life].tyw = 5;
+		disapear_wait = 0;
 	}
 }
 
@@ -68,7 +73,6 @@ void PlayerFish::update_animation_move_player(int x, int y)
 		dis = false;
 	}
 	initShape();
-	int v = 7;//vận tốc tính theo pixel ban đầu mặc định
 	float a = (txw + 1.5) * Globals::screenWidth / 3;
 	float b = (1.5 - tyw) * Globals::screenHeight / 3;//toa do vi tri cua player hien tai tinh theo pixel
 	x_temp = a;

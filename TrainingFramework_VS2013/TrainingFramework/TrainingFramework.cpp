@@ -22,6 +22,7 @@
 #include <conio.h>
 #include <iostream>
 #include <time.h>
+#include <thread>
 
 
 
@@ -36,6 +37,10 @@ bool first = true;
 bool s;
 bool Move = false;
 bool Flash = false;
+Music bgm;// nhac nen
+Music bgm2;
+_Thread et;// sound thread
+_Thread et2;
 int Init ( ESContext *esContext )
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -72,9 +77,14 @@ void Key ( ESContext *esContext, unsigned char key, bool bIsPressed)
 {
 	Singleton<Game>::GetInstance()->Key(key, bIsPressed);
 }
-
+bool gameover;
 void TouchActionDown(ESContext* esContext, int x, int y)
 {	
+	if (Singleton<SceneManager>::GetInstance()->GameOver()) {
+		if (x > 425 && x < 550 && y>386 && y < 426) {
+			gameover = true;
+		}
+	}
 	Flash = true;
 	TimeFlash = 0;
 	m = x;
@@ -84,6 +94,11 @@ void TouchActionDown(ESContext* esContext, int x, int y)
 void TouchActionUp(ESContext* esContext, int x, int y)
 {	
 	Flash = false;
+	if (gameover) {
+		Singleton<SceneManager>::GetInstance()->NewGame();
+		gameover = false;
+		Singleton<Game>::GetInstance()->Newgm = true;
+	}
 }
 
 void TouchActionMove(ESContext* esContext, int x, int y)
@@ -114,10 +129,14 @@ int _tmain(int argc, _TCHAR* argv[])
     esInitContext ( &esContext );
 
 	esCreateWindow ( &esContext, "Hello Triangle", Globals::screenWidth, Globals::screenHeight, ES_WINDOW_RGB | ES_WINDOW_DEPTH);
-	std::thread backgroundThr(&Music::Play, &bgm);
-	std::thread EatTh(&_Thread::soundthread, &et);
+
+	thread backgroundThr2(&Music::Play2, &bgm2);
+	thread EatTh(&_Thread::soundthread, &et);
+	thread EatTh2(&_Thread::sound2, &et2);
+
 	if ( Init ( &esContext ) != 0 )
 		return 0;
+	thread backgroundThr(&Music::Play, &bgm);
 	esRegisterDrawFunc ( &esContext, Draw );
 	esRegisterUpdateFunc ( &esContext, Update );
 	esRegisterKeyFunc ( &esContext, Key);

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "../Utilities/utilities.h"
 #include "Animation2D.h"
 
@@ -12,6 +12,8 @@ public:
 	~PlayerFish();
 	int x_temp = (txw + 1.5) * Globals::screenWidth / 3;
 	int y_temp = (1.5 - tyw) * Globals::screenHeight / 3;
+	int life = 0;
+	int v = 7;//vận tốc tính theo pixel ban đầu mặc định
 	void bite();
 	void disapear();
 	void scoreScene(int);

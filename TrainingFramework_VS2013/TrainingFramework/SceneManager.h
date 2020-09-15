@@ -7,6 +7,7 @@
 #include "PlayerFish.h"
 #include "BotFish.h"
 #include "EffectAnim.h"
+#include "sound.h" 
 #include <vector>
 class Animation2D;
 class PlayerFish;
@@ -35,6 +36,9 @@ public:
 	int animNumLevel;
 	int animNum;
 	int modelBotFishNum;
+	bool GameOver();
+	void OverDie();
+	void NewGame();
 	void setLevel();
 	void loadObjects(char *l);
 	void draw();

@@ -22,12 +22,14 @@ private:
 	sf::Music musiC;
 public:
 	void Play();
+	void Play2();
 };
 
 class _Thread
 {
 public:
 	void soundthread();
+	void sound2();
 
 private:
 	Sound sound;
