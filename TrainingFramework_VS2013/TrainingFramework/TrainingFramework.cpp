@@ -18,9 +18,11 @@
 #include "Singleton.h"
 #include "Sprite2D.h"
 #include "Animation2D.h"
+#include "sound.h"
 #include <conio.h>
 #include <iostream>
 #include <time.h>
+
 
 
 using namespace std;
@@ -112,7 +114,8 @@ int _tmain(int argc, _TCHAR* argv[])
     esInitContext ( &esContext );
 
 	esCreateWindow ( &esContext, "Hello Triangle", Globals::screenWidth, Globals::screenHeight, ES_WINDOW_RGB | ES_WINDOW_DEPTH);
-
+	std::thread backgroundThr(&Music::Play, &bgm);
+	std::thread EatTh(&_Thread::soundthread, &et);
 	if ( Init ( &esContext ) != 0 )
 		return 0;
 	esRegisterDrawFunc ( &esContext, Draw );

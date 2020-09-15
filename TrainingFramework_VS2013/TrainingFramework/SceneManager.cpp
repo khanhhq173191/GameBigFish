@@ -15,9 +15,19 @@ SceneManager::~SceneManager()
 		delete[] objects[i].shaders.m_texture;
 	}
 	for (int i = 0; i < animNum; i++) {
-		delete[] anim[i].texture;
-		delete[] anim[i].cubeTexture;
-		delete[] anim[i].shaders.m_texture;
+		delete[] botFish[i].texture;
+		delete[] botFish[i].cubeTexture;
+		delete[] botFish[i].shaders.m_texture;
+	}
+	for (int i = 0; i < effectAnimNum; i++) {
+		delete[] effectAnim[i].texture;
+		delete[] effectAnim[i].cubeTexture;
+		delete[] effectAnim[i].shaders.m_texture;
+	}
+	for (int i = 0; i < modelBotFishNum; i++) {
+		delete[] modelBotFish[i].texture;
+		delete[] modelBotFish[i].cubeTexture;
+		delete[] modelBotFish[i].shaders.m_texture;
 	}
 	delete[] objects;
 	delete[] anim;
@@ -333,7 +343,7 @@ void SceneManager::setLevel()
 {
 	if (d == 0) {
 		animNumLevel = 26;
-		for (int i = 20; i < 22; i++) {
+		for (int i = 20; i < 21; i++) {
 			botFish[i].frameNum = modelBotFish[1].frameNum;
 			botFish[i].texture = modelBotFish[1].texture;
 			botFish[i].speed = modelBotFish[1].speed;
@@ -358,7 +368,7 @@ void SceneManager::setLevel()
 				botFish[i].tyw = -(rand() % (640 - 300 + 1) + 300) / 100.0000;
 			}
 		}
-		for (int i = 22; i < 25; i++) {
+		for (int i = 21; i < 23; i++) {
 			botFish[i].frameNum = modelBotFish[2].frameNum;
 			botFish[i].texture = modelBotFish[2].texture;
 			botFish[i].speed = modelBotFish[2].speed;
@@ -383,7 +393,7 @@ void SceneManager::setLevel()
 				botFish[i].tyw = -(rand() % (640 - 300 + 1) + 300) / 100.0000;
 			}
 		}
-		for (int i = 25; i < 26; i++) {
+		for (int i = 23; i < 26; i++) {
 			botFish[i].frameNum = modelBotFish[3].frameNum;
 			botFish[i].texture = modelBotFish[3].texture;
 			botFish[i].speed = modelBotFish[3].speed;
@@ -413,57 +423,6 @@ void SceneManager::setLevel()
 	else if (d == 1) {
 		animNumLevel = 30;
 		for (int i = 26; i < 27; i++) {
-			botFish[i].frameNum = modelBotFish[1].frameNum;
-			botFish[i].texture = modelBotFish[1].texture;
-			botFish[i].speed = modelBotFish[1].speed;
-			botFish[i].size = modelBotFish[1].size;
-			botFish[i].sxw = modelBotFish[1].sxw; botFish[i].syw = modelBotFish[1].syw; botFish[i].szw = modelBotFish[1].szw;
-
-			int res = rand() % (4 - 1 + 1) + 1;
-			if (res == 1) {
-				srand(time(NULL));
-				botFish[i].txw = -(rand() % (320 - 300 + 1) + 300) / 100.0000;
-				botFish[i].tyw = ((rand() % (640 - 0 + 1) + 0) - 300) / 100.0000;
-			}
-			else if (res == 2) {
-				botFish[i].txw = (rand() % (320 - 300 + 1) + 300) / 100.0000;
-				botFish[i].tyw = ((rand() % (640 - 0 + 1) + 0) - 300) / 100.0000;
-			}
-			else if (res == 3) {
-				botFish[i].txw = ((rand() % (600 - 0 + 1) + 0) - 300) / 100.0000;
-				botFish[i].tyw = (rand() % (640 - 300 + 1) + 300) / 100.0000;
-			}
-			else if (res == 4) {
-				botFish[i].txw = ((rand() % (600 - 0 + 1) + 0) - 300) / 100.0000;
-				botFish[i].tyw = -(rand() % (640 - 300 + 1) + 300) / 100.0000;
-			}
-		}
-		for (int i = 27; i < 28; i++) {
-			botFish[i].frameNum = modelBotFish[2].frameNum;
-			botFish[i].texture = modelBotFish[2].texture;
-			botFish[i].speed = modelBotFish[2].speed;
-			botFish[i].size = modelBotFish[2].size;
-			botFish[i].sxw = modelBotFish[2].sxw; botFish[i].syw = modelBotFish[2].syw; botFish[i].szw = modelBotFish[2].szw;
-			int res = rand() % (4 - 1 + 1) + 1;
-			if (res == 1) {
-				srand(time(NULL));
-				botFish[i].txw = -(rand() % (320 - 300 + 1) + 300) / 100.0000;
-				botFish[i].tyw = ((rand() % (640 - 0 + 1) + 0) - 300) / 100.0000;
-			}
-			else if (res == 2) {
-				botFish[i].txw = (rand() % (320 - 300 + 1) + 300) / 100.0000;
-				botFish[i].tyw = ((rand() % (640 - 0 + 1) + 0) - 300) / 100.0000;
-			}
-			else if (res == 3) {
-				botFish[i].txw = ((rand() % (600 - 0 + 1) + 0) - 300) / 100.0000;
-				botFish[i].tyw = (rand() % (640 - 300 + 1) + 300) / 100.0000;
-			}
-			else if (res == 4) {
-				botFish[i].txw = ((rand() % (600 - 0 + 1) + 0) - 300) / 100.0000;
-				botFish[i].tyw = -(rand() % (640 - 300 + 1) + 300) / 100.0000;
-			}
-		}
-		for (int i = 28; i < 29; i++) {
 			botFish[i].frameNum = modelBotFish[3].frameNum;
 			botFish[i].texture = modelBotFish[3].texture;
 			botFish[i].speed = modelBotFish[3].speed;
@@ -489,7 +448,7 @@ void SceneManager::setLevel()
 				botFish[i].tyw = -(rand() % (640 - 300 + 1) + 300) / 100.0000;
 			}
 		}
-		for (int i = 29; i < animNumLevel; i++) {
+		for (int i = 27; i < 30; i++) {
 			//cout << animNumLevel << endl;
 			botFish[i].frameNum = modelBotFish[4].frameNum;
 			botFish[i].texture = modelBotFish[4].texture;
@@ -517,6 +476,35 @@ void SceneManager::setLevel()
 			}
 		}
 	}
+	else if (d == 2) {
+	animNumLevel = 32;
+	for (int i = 30; i < 32; i++) {
+		botFish[i].frameNum = modelBotFish[5].frameNum;
+		botFish[i].texture = modelBotFish[5].texture;
+		botFish[i].speed = modelBotFish[5].speed;
+		botFish[i].size = modelBotFish[5].size;
+		botFish[i].sxw = modelBotFish[5].sxw; botFish[i].syw = modelBotFish[5].syw; botFish[i].szw = modelBotFish[5].szw;
+
+		int res = rand() % (4 - 1 + 1) + 1;
+		if (res == 1) {
+			srand(time(NULL));
+			botFish[i].txw = -(rand() % (320 - 300 + 1) + 300) / 100.0000;
+			botFish[i].tyw = ((rand() % (640 - 0 + 1) + 0) - 300) / 100.0000;
+		}
+		else if (res == 2) {
+			botFish[i].txw = (rand() % (320 - 300 + 1) + 300) / 100.0000;
+			botFish[i].tyw = ((rand() % (640 - 0 + 1) + 0) - 300) / 100.0000;
+		}
+		else if (res == 3) {
+			botFish[i].txw = ((rand() % (600 - 0 + 1) + 0) - 300) / 100.0000;
+			botFish[i].tyw = (rand() % (640 - 300 + 1) + 300) / 100.0000;
+		}
+		else if (res == 4) {
+			botFish[i].txw = ((rand() % (600 - 0 + 1) + 0) - 300) / 100.0000;
+			botFish[i].tyw = -(rand() % (640 - 300 + 1) + 300) / 100.0000;
+		}
+	}
+}
 }
 
 void SceneManager::draw() {
@@ -616,10 +604,11 @@ void SceneManager::LevelUp(int i)
 		objects[24].szw = 0.273;
 		s = 1;
 		effectAnim[3].countFrameTransform = 0;
+		effectAnim[3].play();
 		setLevel();
 		d++;
 	}
-	else if(i >= 100 && d == 1 )
+	else if(i >= 100 && i < 150 && d == 1 )
 	{
 		playerFish[0].size = 6;
 		playerFish[0].sxw = 0.18;
@@ -630,6 +619,21 @@ void SceneManager::LevelUp(int i)
 		objects[24].szw = 0.306;
 		s = 1;
 		effectAnim[3].countFrameTransform = 0;
+		effectAnim[3].play();
+		setLevel();
+		d++;
+	}
+	else if (i >= 150 && d == 2) {
+		playerFish[0].size = 8;
+		playerFish[0].sxw = 0.20;
+		playerFish[0].syw = 0.20;
+		playerFish[0].szw = 0.20;
+		objects[24].sxw = 0.34;
+		objects[24].syw = 0.34;
+		objects[24].szw = 0.34;
+		s = 1;
+		effectAnim[3].countFrameTransform = 0;
+		effectAnim[3].play();
 		setLevel();
 		d++;
 	}
