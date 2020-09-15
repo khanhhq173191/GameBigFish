@@ -18,12 +18,10 @@
 #include "Singleton.h"
 #include "Sprite2D.h"
 #include "Animation2D.h"
-#include "sound.h"
 #include <conio.h>
 #include <iostream>
 #include <time.h>
-
-
+#include "sound.h"
 
 using namespace std;
 GLuint vboId, iboId, textureID, matrixID;
@@ -36,6 +34,9 @@ bool first = true;
 bool s;
 bool Move = false;
 bool Flash = false;
+Music bgm;// nhac nen
+_Thread et;// sound thread
+
 int Init ( ESContext *esContext )
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -118,6 +119,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	std::thread EatTh(&_Thread::soundthread, &et);
 	if ( Init ( &esContext ) != 0 )
 		return 0;
+
 	esRegisterDrawFunc ( &esContext, Draw );
 	esRegisterUpdateFunc ( &esContext, Update );
 	esRegisterKeyFunc ( &esContext, Key);

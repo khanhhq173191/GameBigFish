@@ -3,7 +3,6 @@
 
 using namespace std;
 
-
 Game* Game::s_Instance = NULL;
 
 Game::Game(void)

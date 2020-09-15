@@ -43,11 +43,14 @@ void PlayerFish::bite()
 
 void PlayerFish::disapear()
 {
+	//Âm thanh lúc cá xuất hiện cho vào đây
 	if (disapear_wait == 1) {
 		txw = ((rand() % (100 - 0 + 1) + 0) - 50) / 100;
 		tyw = 1.7;
 		m_time = 0;
 		dis = true;
+		//Chỗ này
+		Singleton<Game>::GetInstance()->Disapear = true;
 	}
 }
 
